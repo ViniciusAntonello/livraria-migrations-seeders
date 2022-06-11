@@ -4,7 +4,7 @@ const Sequelize = require("sequelize");
 
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
-const DB_PASS = "/Maokai1991";
+const DB_PASS = process.env.DB_PASSWORD;
 const DB_CONFIG = {
   dialect: process.env.DB_DIALECT,
   host: process.env.DB_HOST,
@@ -19,7 +19,7 @@ try {
   console.error("Error ao tentar uma conexão com banco dados");
 }
 
-async function hasConection() {
+async function hasConnection() {
   try {
     await db.authenticate();
     console.log("Banco dados conectado!");
@@ -29,7 +29,7 @@ async function hasConection() {
 }
 
 Object.assign(db, {
-  hasConection,
+  hasConnection,
 });
 
 module.exports = db;
