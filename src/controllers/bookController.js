@@ -1,4 +1,4 @@
-const { Books } = require("../database/models");
+const { Books } = require('../database/models')
 
 const BookController = {
     async create(req, res) {
@@ -6,8 +6,8 @@ const BookController = {
             ...req.body
         })
 
-        return res.status(201).json(newBook);
+        return res.status(201).json({dadosFinais: newBook})
     }
 }
 
-module.exports = BookController;
+module.exports = BookController
