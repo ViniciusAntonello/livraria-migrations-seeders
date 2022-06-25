@@ -1,5 +1,6 @@
 const { Books } = require('../database/models');
 const claudinary = require('../config/cloudinary');
+const fs = require('fs');
 
 const imageFolder = 'images/';
 
@@ -9,6 +10,7 @@ const BookController = {
 
         const file = req.files[0]
         const uploadPath = await claudinary.uploads(file.path, 'livraria')
+        fs.unlinkSync(file.path);
 
         const newBook = await Books.create({
             ...req.body,
